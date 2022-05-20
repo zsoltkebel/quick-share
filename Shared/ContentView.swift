@@ -20,7 +20,7 @@ struct ContentView: View {
             }
             Button {
                 let pasteboard = UIPasteboard.general
-                
+                print("aha")
                 if pasteboard.hasStrings {
                     url = address + pasteboard.string!
                 }

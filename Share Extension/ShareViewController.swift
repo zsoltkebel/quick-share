@@ -6,25 +6,40 @@
 //
 
 import UIKit
-import Social
 
-class ShareViewController: SLComposeServiceViewController {
-
-    override func isContentValid() -> Bool {
-        // Do validation of contentText and/or NSExtensionContext attachments here
-        return true
-    }
-
-    override func didSelectPost() {
-        // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
+class ShareViewController: UIViewController {
     
-        // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
-        self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+    @IBOutlet weak var QRCodeImageView: UIImageView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.backgroundColor = .systemGray6
+
+        if let item = extensionContext?.inputItems.first as? NSExtensionItem,
+           let itemProvider = item.attachments?.first as? NSItemProvider,
+            itemProvider.hasItemConformingToTypeIdentifier("public.url") {
+                itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil) { (url, error) in
+                    if let shareURL = url as? URL {
+                        // do what you want to do with shareURL
+                        let address = "https://api.qrserver.com/v1/create-qr-code/?data="
+                        let codeURL = address + shareURL.absoluteString
+                        if let imageURL = URL(string: codeURL) {
+                            self.QRCodeImageView.load(url: imageURL)
+                        }
+                    }
+
+                }
+            }
+    }
+    
+    @IBAction func onDonePressed(_ sender: UIBarButtonItem) {
+        extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
     }
 
-    override func configurationItems() -> [Any]! {
-        // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
-        return []
-    }
+    // code to dismiss with error below
+//        let error = NSError(domain: "some.bundle.identifier", code: 0, userInfo: [NSLocalizedDescriptionKey: "An error description"])
+//        extensionContext?.cancelRequest(withError: error)
+
 
 }
