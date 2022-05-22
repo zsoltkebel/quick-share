@@ -16,6 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P9D-y7-qhC">
+                                <rect key="frame" x="65" y="306" width="284" height="284"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="P9D-y7-qhC" secondAttribute="height" multiplier="1:1" id="8Pn-xL-UdD"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="9fL-Zj-RO9">
                                 <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                             </activityIndicatorView>
@@ -31,8 +44,12 @@
                         <constraints>
                             <constraint firstItem="Vfj-nJ-H4b" firstAttribute="centerY" secondItem="wbc-yd-nQP" secondAttribute="centerY" id="7JQ-Rj-amP"/>
                             <constraint firstItem="9fL-Zj-RO9" firstAttribute="centerX" secondItem="wbc-yd-nQP" secondAttribute="centerX" id="Ir8-JR-q2X"/>
+                            <constraint firstItem="P9D-y7-qhC" firstAttribute="centerY" secondItem="wbc-yd-nQP" secondAttribute="centerY" id="KgL-oV-5i4"/>
+                            <constraint firstItem="P9D-y7-qhC" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" constant="65" id="VvR-pQ-taY"/>
+                            <constraint firstItem="P9D-y7-qhC" firstAttribute="centerX" secondItem="wbc-yd-nQP" secondAttribute="centerX" id="Yaf-jw-9sp"/>
                             <constraint firstItem="9fL-Zj-RO9" firstAttribute="centerY" secondItem="wbc-yd-nQP" secondAttribute="centerY" id="h0o-xF-aoF"/>
                             <constraint firstItem="Vfj-nJ-H4b" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" constant="80" id="tWm-p9-ZJu"/>
+                            <constraint firstItem="1Xd-am-t49" firstAttribute="trailing" secondItem="P9D-y7-qhC" secondAttribute="trailing" constant="65" id="uZ5-Gx-FO6"/>
                             <constraint firstItem="Vfj-nJ-H4b" firstAttribute="centerX" secondItem="wbc-yd-nQP" secondAttribute="centerX" id="xBu-fy-cnH"/>
                             <constraint firstItem="1Xd-am-t49" firstAttribute="trailing" secondItem="Vfj-nJ-H4b" secondAttribute="trailing" constant="80" id="xhJ-tg-yJS"/>
                         </constraints>
